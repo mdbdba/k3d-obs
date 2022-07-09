@@ -3,3 +3,7 @@ kind: Kustomization
 resources:
 - gotk-components.yaml
 - gotk-sync.yaml
+- repos-sync.yaml
+- supporting-infra-sync.yaml
+- resources-sync.yaml
+- releases-sync.yaml
