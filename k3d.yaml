@@ -1,0 +1,16 @@
+kind: Simple
+apiVersion: k3d.io/v1alpha4
+metadata:
+  name: obs
+agents: 3
+kubeAPI:
+  hostIP: "127.0.0.1"
+  hostPort: "6550"
+ports:
+- port: 8081:80
+  nodeFilters:
+  - loadbalancer
+- port: 443:443
+  nodeFilters:
+  - loadbalancer
+
