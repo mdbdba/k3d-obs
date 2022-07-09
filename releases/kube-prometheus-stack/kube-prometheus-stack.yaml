@@ -22,7 +22,7 @@ spec:
         enabled: true
         type: statefulset
         size: 30Gi
-        storageClassName: standard
+        storageClassName: local-path
         accessMode: ["ReadWriteOnce"]
   interval: 10m0s
   targetNamespace: monitoring
