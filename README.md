@@ -38,7 +38,7 @@ kubectl cluster-info
 ```shell
 flux bootstrap github \
 --owner=$GITHUB_USER \
---repository=k3d-ops \
+--repository=k3d-obs \
 --branch=main \
 --path=./ops \
 --personal
