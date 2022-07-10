@@ -6,8 +6,6 @@ metadata:
   name: goldilocks
   namespace: flux-system
 spec:
-  dependsOn:
-  - name: metrics-server
   interval: 10m0s
   path: ./releases/goldilocks
   prune: true
