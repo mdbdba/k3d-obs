@@ -15,5 +15,10 @@ spec:
       version: 6.1.3
   interval: 10m0s
   values:
+    controller:
+      deployment:
+	additionalLabels:
+	  spog_service_type: observability
+          spog_service: goldilocks
     vpa:
       enabled: true

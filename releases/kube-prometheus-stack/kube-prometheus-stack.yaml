@@ -24,6 +24,9 @@ spec:
         size: 30Gi
         storageClassName: local-path
         accessMode: ["ReadWriteOnce"]
+      labels:
+	spog_service_type: observability
+	spog_service: grafana
     additionalPrometheusRulesMap:
       node.rules:
         groups:
