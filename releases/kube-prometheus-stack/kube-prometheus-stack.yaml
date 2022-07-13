@@ -25,8 +25,8 @@ spec:
         storageClassName: local-path
         accessMode: ["ReadWriteOnce"]
       labels:
-	spog-service-type: observability
-	spog-service: grafana
+        spog_service_type: observability
+        spog_service: grafana
     additionalPrometheusRulesMap:
       node.rules:
         groups:

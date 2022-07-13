@@ -17,8 +17,8 @@ spec:
   values:
     controller:
       deployment:
-	additionalLabels:
-	  spog-service-type: observability
-          spog-service: goldilocks
+        additionalLabels:
+          spog_service_type: observability
+          spog_service: goldilocks
     vpa:
       enabled: true
