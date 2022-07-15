@@ -18,7 +18,7 @@ spec:
     controller:
       deployment:
         additionalLabels:
-          spog_service_type: observability
-          spog_service: goldilocks
+          generalized_service_type: observability
+          generalized_service: goldilocks
     vpa:
       enabled: true

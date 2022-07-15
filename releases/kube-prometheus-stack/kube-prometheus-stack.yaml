@@ -16,7 +16,6 @@ spec:
       spog_service_type: observability
       spog_service: prometheus
     annotations:
-      prometheus.io/monitored: "true"
       obs/monitored: "true"
 
     grafana:
@@ -35,15 +34,15 @@ spec:
         spog_service_type: observability
         spog_service: grafana
       podAnnotations:
-        prometheus.io/monitored: "true"
         obs/monitored: "true"
+      serviceMonitor:
+        enabled: true
+
     alertmanager:
       annotations:
-        prometheus.io/monitored: "true"
         obs/monitored: "true"
     prometheus:
       annotations:
-        prometheus.io/monitored: "true"
         obs/monitored: "true"
 
     additionalPrometheusRulesMap:
