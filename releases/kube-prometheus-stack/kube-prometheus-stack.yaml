@@ -31,19 +31,13 @@ spec:
         storageClassName: local-path
         accessMode: ["ReadWriteOnce"]
       podLabels:
-        spog_service_type: observability
-        spog_service: grafana
+        generalized_service_type: observability
+        generalized_service: grafana
       podAnnotations:
         obs/monitored: "true"
       serviceMonitor:
         enabled: true
 
-    alertmanager:
-      annotations:
-        obs/monitored: "true"
-    prometheus:
-      annotations:
-        obs/monitored: "true"
 
     additionalPrometheusRulesMap:
       node.rules:
