@@ -33,7 +33,7 @@ spec:
       podLabels:
         generalized_service_type: observability
         generalized_service: grafana
-	release: monitoring-prometheus-operator
+        release: monitoring-prometheus-operator
       podAnnotations:
         obs/monitored: "true"
       serviceMonitor:
