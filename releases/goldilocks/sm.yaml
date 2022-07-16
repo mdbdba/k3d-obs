@@ -1,0 +1,24 @@
+apiVersion: monitoring.coreos.com/v1 
+kind: ServiceMonitor 
+metadata:
+  name: grafana-metrics
+  namespace: monitoring
+  labels:
+    app: grafana
+    release: monitoring-prometheus-operator
+    # ( VERY IMPORTANT: You need to know the correct release name by viewing 
+    # the servicemonitor of Prometheus itself: Without the correct name, 
+    #  Prometheus cannot identify the metrics of the Flask app as the target.)
+spec:
+  selector:
+    matchLabels:
+      # Target app service
+      app: grafana # same as above
+      release: monitoring-prometheus-operator  # same as above
+  endpoints:
+  - interval: 15s # scrape interval
+    path: /metrics # path to scrape
+    port: http # named port in target app
+  namespaceSelector:
+    matchNames:
+    - resource-audit # namespace where the app is running

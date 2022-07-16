@@ -18,6 +18,7 @@ spec:
     controller:
       deployment:
         additionalLabels:
+          app: goldilocks
           generalized_service_type: observability
           generalized_service: goldilocks
           release: monitoring-prometheus-operator
