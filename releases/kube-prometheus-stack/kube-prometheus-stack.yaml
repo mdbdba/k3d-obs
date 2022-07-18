@@ -37,6 +37,11 @@ spec:
         release: monitoring-prometheus-operator
       podAnnotations:
         obs/monitored: "true"
+      serviceMonitor:
+        enabled: "true"
+        labels: 
+          app: grafana
+          release: monitoring-prometheus-operator
 
     additionalPrometheusRulesMap:
       node.rules:
