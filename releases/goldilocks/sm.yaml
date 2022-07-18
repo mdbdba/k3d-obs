@@ -1,10 +1,10 @@
 apiVersion: monitoring.coreos.com/v1 
 kind: ServiceMonitor 
 metadata:
-  name: grafana-metrics
-  namespace: monitoring
+  name: goldilocks-metrics
+  namespace: resource-audit
   labels:
-    app: grafana
+    app: goldilocks
     release: monitoring-prometheus-operator
     # ( VERY IMPORTANT: You need to know the correct release name by viewing 
     # the servicemonitor of Prometheus itself: Without the correct name, 
@@ -13,7 +13,7 @@ spec:
   selector:
     matchLabels:
       # Target app service
-      app: grafana # same as above
+      app: goldilocks # same as above
       release: monitoring-prometheus-operator  # same as above
   endpoints:
   - interval: 15s # scrape interval

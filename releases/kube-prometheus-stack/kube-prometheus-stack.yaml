@@ -37,9 +37,6 @@ spec:
         release: monitoring-prometheus-operator
       podAnnotations:
         obs/monitored: "true"
-      serviceMonitor:
-        enabled: true
-
 
     additionalPrometheusRulesMap:
       node.rules:
