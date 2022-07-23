@@ -18,7 +18,21 @@ spec:
       spog_service: prometheus
     annotations:
       obs/monitored: "true"
-
+    resources:
+      requests:
+        cpu: 15m
+        memory: 105M
+      limits:
+        cpu: 1215m
+        memory: 584M
+    alertmanager:
+      resources:
+        requests:
+          cpu: 8m
+          memory: 53M
+        limits:
+          cpu: 1771m
+          memory: 3796M
     grafana:
       enabled: true
       replicas: 1
