@@ -52,6 +52,13 @@ spec:
         release: monitoring-prometheus-operator
       podAnnotations:
         obs/monitored: "true"
+      resources:
+        requests:
+          cpu: 10m
+          memory: 78M
+        limits:
+          cpu: 170m
+          memory: 582M
       serviceMonitor:
         enabled: "true"
         labels: 
