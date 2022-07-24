@@ -13,8 +13,10 @@ spec:
   selector:
     matchLabels:
       # Target app service
-      app.kubernetes.io/name: goldilocks # same as above
-      app.kubernetes.io/instance: monitoring-prometheus-operator  # same as above
+      app.kubernetes.io/name: goldilocks
+      app.kubernetes.io/instance: resource-audit-goldilocks
+      app: goldilocks # same as above
+      release: monitoring-prometheus-operator  # same as above
   endpoints:
   - interval: 30s # scrape interval
     path: /metrics # path to scrape
