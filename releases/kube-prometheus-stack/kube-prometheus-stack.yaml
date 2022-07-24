@@ -33,20 +33,6 @@ spec:
         limits:
           cpu: 1771m
           memory: 3796M
-    prometheus:
-      prometheusSpec:
-        podMonitorNamespaceSelector:
-          any: true
-        podMonitorSelector: {}
-        podMonitorSelectorNilUsesHelmValues: false
-        ruleNamespaceSelector:
-          any: true
-        ruleSelector: {}
-        ruleSelectorNilUsesHelmValues: false
-        serviceMonitorNamespaceSelector:
-          any: true
-        serviceMonitorSelector: {}
-        serviceMonitorSelectorNilUsesHelmValues: false
     grafana:
       enabled: true
       replicas: 1
