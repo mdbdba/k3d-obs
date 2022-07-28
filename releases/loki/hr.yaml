@@ -16,7 +16,6 @@ spec:
   values:
     loki:
       podLabels:
-        app: loki
         generalized_service_type: observability
         generalized_service: loki
       serviceMonitor:
