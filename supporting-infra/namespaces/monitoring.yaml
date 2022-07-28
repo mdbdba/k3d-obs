@@ -3,6 +3,6 @@ kind: Namespace
 metadata:
   name: monitoring
   labels:
-    prometheus.io/scrape: "true"
+    prometheus.io/monitored: "true"
     goldilocks.fairwinds.com/enabled: "true"
     obs/monitored: "true"

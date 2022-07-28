@@ -4,7 +4,7 @@ kind: Namespace
 metadata:
   name: team-snake
   labels:
-    prometheus.io/scrape: "true"
+    prometheus.io/monitored: "true"
     goldilocks.fairwinds.com/enabled: "true"
     obs/monitored: "true"
 ---
@@ -13,7 +13,7 @@ kind: Namespace
 metadata:
   name: team-lion
   labels:
-    prometheus.io/scrape: "true"
+    prometheus.io/monitored: "true"
     goldilocks.fairwinds.com/enabled: "true"
     obs/monitored: "true"
 ---
@@ -22,7 +22,7 @@ kind: Namespace
 metadata:
   name: team-eagle
   labels:
-    prometheus.io/scrape: "true"
+    prometheus.io/monitored: "true"
     goldilocks.fairwinds.com/enabled: "true"
     obs/monitored: "true"
 
@@ -32,6 +32,6 @@ kind: Namespace
 metadata:
   name: team-badger
   labels:
-    prometheus.io/scrape: "true"
+    prometheus.io/monitored: "true"
     goldilocks.fairwinds.com/enabled: "true"
     obs/monitored: "true"

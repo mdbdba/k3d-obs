@@ -35,9 +35,38 @@ spec:
           memory: 3796M
     prometheus:
       prometheusSpec:
-        serviceMonitorSelectorNilUsesHelmValues: true
-        serviceMonitorSelector: {}
-        serviceMonitorNamespaceSelector: {}
+        # serviceMonitorSelectorNilUsesHelmValues: true
+        serviceMonitorNamespaceSelector:
+          matchLabels:
+            prometheus.io/monitored: "true"
+        serviceMonitorSelector:
+          # Impelmenting an opt-out model.
+          # i.e. If a ServiceMonitor explicitly adds a label of prometheus.io/monitored: "false"
+          # it will not be scraped by the Grafana Agent
+          matchExpressions:
+            - key: prometheus.io/monitored
+              operator: NotIn
+              values:
+                - "false"
+        podMonitorNamespaceSelector:
+          matchLabels:
+            prometheus.io/monitored: "true"
+        podMonitorSelector:
+          matchExpressions:
+            - key: prometheus.io/monitored
+              operator: NotIn
+              values:
+                - "false"
+        probeNamespaceSelector:
+          matchLabels:
+            prometheus.io/monitored: "true"
+        probeSelector:
+          matchExpressions:
+            - key: prometheus.io/monitored
+              operator: NotIn
+              values:
+                - "false"
+
     grafana:
       enabled: true
       replicas: 1
