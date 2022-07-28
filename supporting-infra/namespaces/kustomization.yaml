@@ -5,3 +5,4 @@ resources:
 - logging.yaml
 - resource-audit.yaml
 - teams.yaml
+- tracing.yaml
