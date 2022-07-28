@@ -26,7 +26,7 @@ spec:
         - name: JAEGER_SAMPLER_TYPE
           value: probabilistic
         - name: JAEGER_SAMPLER_PARAM
-          value: "100"
+          value: "1"
 
 
 
