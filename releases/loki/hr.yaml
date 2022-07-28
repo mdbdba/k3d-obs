@@ -23,7 +23,6 @@ spec:
         enabled: true
         port: "http-metrics"
         additionalLabels:
-          app: loki
           release: monitoring-prometheus-operator
 
 
