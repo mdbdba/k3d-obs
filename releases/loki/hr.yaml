@@ -13,5 +13,17 @@ spec:
         kind: HelmRepository
         name: grafana
   interval: 10m0s
+  values:
+    loki:
+      podLabels:
+        app: loki
+        generalized_service_type: observability
+        generalized_service: loki
+      serviceMonitor:
+        enabled: true
+        port: "http-metrics"
+        additionalLabels:
+          app: loki
+          release: monitoring-prometheus-operator
 
 
