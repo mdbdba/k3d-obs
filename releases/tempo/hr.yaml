@@ -1,0 +1,24 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: tempo
+  namespace: flux-system
+spec:
+  targetNamespace: tracing
+  chart:
+    spec:
+      chart: tempo
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+  interval: 10m0s
+  values:
+    podLabels:
+      generalized_service_type: observability
+      generalized_service: tempo
+    serviceMonitor:
+      enabled: "true"
+
+
+
