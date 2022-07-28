@@ -20,6 +20,13 @@ spec:
         generalized_service: loki
       serviceMonitor:
         enabled: "true"
+      env:
+        - name: JAEGER_AGENT_HOST
+          value: tracing-tempo.tracing.svc
+        - name: JAEGER_SAMPLER_TYPE
+          value: probabilistic
+        - name: JAEGER_SAMPLER_PARAM
+          value: "100"
 
 
 
