@@ -18,7 +18,6 @@ spec:
     mode: deployment
     config:
       receivers:
-        oltp: null
         prometheus: null
         zipkin: null
       service:
@@ -26,5 +25,6 @@ spec:
           traces:
             receivers:
               - jaeger
+              - otlp
           metrics: null
           logs: null
