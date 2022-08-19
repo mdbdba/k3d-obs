@@ -21,11 +21,30 @@ spec:
       receivers:
         prometheus: null
         zipkin: null
+      processors:
+        batch:
+        resource:
+          attributes:
+            - key: auth-token
+              action: delete
+      exporters:
+        logging:
+          logLevel: debug
+        jaeger:
+          endpoint: tracing-tempo.tracing.svc:14250
+          tls:
+            insecure: true
+
       service:
         pipelines:
           traces:
             receivers:
               - jaeger
               - otlp
+            processors:
+              - batch
+            exporters:
+              - logging
+              - jaeger
           metrics: null
           logs: null
