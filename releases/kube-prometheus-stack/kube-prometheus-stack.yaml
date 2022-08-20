@@ -95,7 +95,7 @@ spec:
           memory: 582M
       grafana.ini:
         feature_toggles:
-          enable: "tempoSearchtempo BackendSearch"
+          enable: "tempoSearch tempoBackendSearch"
       serviceMonitor:
         enabled: "true"
         labels: 
