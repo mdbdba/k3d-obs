@@ -93,6 +93,9 @@ spec:
         limits:
           cpu: 170m
           memory: 582M
+      grafana.ini:
+        feature_toggles:
+          enable: "tempoSearchtempo BackendSearch"
       serviceMonitor:
         enabled: "true"
         labels: 

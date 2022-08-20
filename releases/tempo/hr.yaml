@@ -17,6 +17,7 @@ spec:
     podLabels:
       generalized_service_type: observability
       generalized_service: tempo
+    searchEnabled: "true"
     serviceMonitor:
       enabled: "true"
 
