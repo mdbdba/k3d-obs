@@ -98,6 +98,23 @@ spec:
         labels: 
           app: grafana
           release: monitoring-prometheus-operator
+      datasources:
+        datasources.yaml:
+          apiVersion: 1
+          datasources:
+          - name: Prometheus
+            type: prometheus
+            url: http://kps-prometheus.monitoring:9090/
+            access: proxy
+            isDefault: true
+          - name: Loki
+            type: loki
+            access: proxy
+            url: http://logging-loki-stack.logging.svc:3100/
+          - name: Tempo
+            type: tempo
+            access: proxy
+            url: http://tracing-tempo.tracing.svc:3100/
 
     additionalPrometheusRulesMap:
       node.rules:
