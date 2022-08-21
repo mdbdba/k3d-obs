@@ -18,6 +18,8 @@ spec:
       podLabels:
         generalized_service_type: observability
         generalized_service: loki
+      image:
+        tag: 2.6.1
       serviceMonitor:
         enabled: "true"
       env:
