@@ -21,7 +21,7 @@ spec:
       image:
         tag: 2.6.1
       serviceMonitor:
-        enabled: "true"
+        enabled: true
       env:
 #        - name: JAEGER_AGENT_HOST
 #          value: tracing-tempo.tracing.svc
