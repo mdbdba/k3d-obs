@@ -14,10 +14,14 @@ spec:
         name: grafana
   interval: 10m0s
   values:
+    tempo:
+      tag: 1.5.0
+      searchEnabled: true
+    tempoQuery:
+      tag: 1.5.0
     podLabels:
       generalized_service_type: observability
       generalized_service: tempo
-    searchEnabled: true
     serviceMonitor:
       enabled: true
 
