@@ -109,7 +109,6 @@ spec:
             type: prometheus
             url: http://kps-prometheus.monitoring:9090/
             access: proxy
-            isDefault: true
           - name: Loki
             type: loki
             access: proxy
