@@ -6,3 +6,4 @@ resources:
 - resource-audit.yaml
 - teams.yaml
 - tracing.yaml
+- telemetry.yaml
