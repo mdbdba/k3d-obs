@@ -7,4 +7,4 @@ resources:
 - ./goldilocks/ks.yaml
 - ./otel-collector/ks.yaml
 - ./clickhouse-operator/ks.yaml
-- ./uptrace/ks.yaml
+# - ./uptrace/ks.yaml
