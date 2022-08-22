@@ -11,7 +11,7 @@ spec:
       chart: uptrace
       sourceRef:
         kind: HelmRepository
-        name: open-telemetry
+        name: uptrace
       version: 0.26.0
   interval: 10m0s
   values:
