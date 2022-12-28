@@ -6,5 +6,4 @@ resources:
 - ./tempo/ks.yaml
 - ./goldilocks/ks.yaml
 - ./otel-collector/ks.yaml
-# - ./clickhouse-operator/ks.yaml
-# - ./uptrace/ks.yaml
+- ./kafka/ks.yaml
