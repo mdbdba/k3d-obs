@@ -5,5 +5,5 @@ resources:
 - ./loki/ks.yaml
 - ./tempo/ks.yaml
 - ./goldilocks/ks.yaml
-- ./otel-collector/ks.yaml
+- ./otel-weeder/ks.yaml
 - ./kafka/ks.yaml

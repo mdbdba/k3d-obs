@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: otel-collector
+  name: otel-weeder
   namespace: flux-system
 spec:
   targetNamespace: monitoring
@@ -16,7 +16,7 @@ spec:
   interval: 10m0s
   values:
     mode: deployment
-    fullnameOverride: "otel-collector"
+    fullnameOverride: "otel-weeder"
     config:
       receivers:
         prometheus: null
