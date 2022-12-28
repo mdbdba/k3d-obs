@@ -7,3 +7,4 @@ resources:
 - teams.yaml
 - tracing.yaml
 - telemetry.yaml
+- queuing.yaml
