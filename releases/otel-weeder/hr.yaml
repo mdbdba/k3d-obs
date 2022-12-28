@@ -30,10 +30,11 @@ spec:
       exporters:
         logging:
           logLevel: debug
-        jaeger:
-          endpoint: tracing-tempo.tracing.svc:14250
-          tls:
-            insecure: true
+        kafka:
+          brokers:
+            - kafka-kafka-brokers.queuing.svc:9092
+          topic: otlp_spans
+          protocol_version: 3.3.0
 
       service:
         pipelines:
@@ -45,6 +46,6 @@ spec:
               - batch
             exporters:
               - logging
-              - jaeger
+              - kafka
           metrics: null
           logs: null
