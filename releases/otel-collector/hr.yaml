@@ -12,7 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: open-telemetry
-      version: 0.26.0
+      version: 0.43.2
   interval: 10m0s
   values:
     mode: deployment
