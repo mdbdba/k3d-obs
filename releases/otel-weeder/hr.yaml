@@ -36,7 +36,7 @@ spec:
                 key: http.path
                 values:
                   - /grpc.health.v1.Health/Check
-              invert_match: true
+                invert_match: true
 
       exporters:
         logging:
