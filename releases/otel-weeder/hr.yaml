@@ -26,6 +26,16 @@ spec:
         batch:
           send_batch_size: 10000
           timeout: 10s
+        tail_sampling:
+          decision_wait: 1s
+          num_traces: 100
+          policies:
+            - name: remove_health_checks
+              type: string_attribute
+              key: http.path
+              values:
+                - /grpc.health.v1.Health/Check
+              invert_match: true
 
       exporters:
         logging:
@@ -44,6 +54,7 @@ spec:
               - otlp
             processors:
               - batch
+              - remove_health_checks
             exporters:
               - logging
               - kafka
