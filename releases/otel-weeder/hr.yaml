@@ -33,7 +33,7 @@ spec:
         kafka:
           brokers:
             - kafka-kafka-brokers.queuing.svc:9092
-          topic: otlp_spans
+          topic: spans
           protocol_version: 3.3.0
 
       service:
