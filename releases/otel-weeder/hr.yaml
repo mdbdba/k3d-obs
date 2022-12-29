@@ -43,26 +43,26 @@ spec:
               },
             ]
 
-          exporters:
-            logging:
-              logLevel: debug
-            kafka:
-              brokers:
-                - kafka-kafka-brokers.queuing.svc:9092
-              topic: spans
-              protocol_version: 3.3.0
+      exporters:
+        logging:
+          logLevel: debug
+        kafka:
+          brokers:
+            - kafka-kafka-brokers.queuing.svc:9092
+          topic: spans
+          protocol_version: 3.3.0
 
-          service:
-            pipelines:
-              traces:
-                receivers:
-                  - jaeger
-                  - otlp
-                processors:
-                  - batch
-                  - tail_sampling
-                exporters:
-                  - logging
-                  - kafka
-              metrics: null
-              logs: null
+      service:
+        pipelines:
+          traces:
+            receivers:
+              - jaeger
+              - otlp
+            processors:
+              - batch
+              - tail_sampling
+            exporters:
+              - logging
+              - kafka
+          metrics: null
+          logs: null
