@@ -30,34 +30,39 @@ spec:
           decision_wait: 1s
           num_traces: 100
           policies:
-            - name: remove_health_checks
-              type: string_attribute
-              string_attribute:
-                key: http.path
-                values:
-                  - /grpc.health.v1.Health/Check
-                invert_match: true
+            [
+              {
+                name: remove_health_checks,
+                type: string_attribute,
+                string_attribute:
+                  {
+                    key: http.path,
+                    values: [ \/grpc.health.v1.Health\/Check ],
+                    invert_match: true
+                  },
+              },
+            ]
 
-      exporters:
-        logging:
-          logLevel: debug
-        kafka:
-          brokers:
-            - kafka-kafka-brokers.queuing.svc:9092
-          topic: spans
-          protocol_version: 3.3.0
+          exporters:
+            logging:
+              logLevel: debug
+            kafka:
+              brokers:
+                - kafka-kafka-brokers.queuing.svc:9092
+              topic: spans
+              protocol_version: 3.3.0
 
-      service:
-        pipelines:
-          traces:
-            receivers:
-              - jaeger
-              - otlp
-            processors:
-              - batch
-              - tail_sampling
-            exporters:
-              - logging
-              - kafka
-          metrics: null
-          logs: null
+          service:
+            pipelines:
+              traces:
+                receivers:
+                  - jaeger
+                  - otlp
+                processors:
+                  - batch
+                  - tail_sampling
+                exporters:
+                  - logging
+                  - kafka
+              metrics: null
+              logs: null
