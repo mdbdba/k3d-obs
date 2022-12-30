@@ -36,8 +36,8 @@ spec:
                 type: string_attribute,
                 string_attribute:
                   {
-                    key: http.path,
-                    values: [ \/grpc.health.v1.Health\/Check ],
+                    key: http.url,
+                    values: [ \/health, \/metrics, \/ready ],
                     invert_match: true
                   },
               },
