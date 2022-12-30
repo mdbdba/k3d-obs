@@ -37,7 +37,8 @@ spec:
                 string_attribute:
                   {
                     key: http.url,
-                    values: [ \/health, \/metrics, \/ready ],
+                    values: [\/health, \/metrics, \/ready],
+                    enabled_regex_matching: true,
                     invert_match: true
                   },
               },
