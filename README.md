@@ -43,23 +43,7 @@ flux bootstrap github \
 --path=./ops \
 --personal
 ```
-# node mixin 
-```shell
-❯ cd mixin/node
-❯ make node-rules.yaml node-alert.yaml
-❯ make dashboards_out
-jsonnet -J vendor -m dashboards_out dashboards.jsonnet
-dashboards_out/node-cluster-rsrc-use.json
-dashboards_out/node-rsrc-use.json
-dashboards_out/nodes-darwin.json
-dashboards_out/nodes.json
 
-❯ promtool check rules node_rules.yaml
-Checking node_rules.yaml
-  SUCCESS: 11 rules found
-
-❯ kubectl create configmap -n monitoring node-rules --from-file=node_rules.yaml --dry-run=client -o yaml > node_rules_configmap.yaml
-```
 
 
 
