@@ -26,9 +26,49 @@ spec:
           protocol_version: 3.3.0
 
       processors:
+        memory_limiter:
+          check_interval: 5s
+          limit_percentage: 50
+          spike_limit_percentage: 30
         batch:
           send_batch_size: 10000
           timeout: 10s
+        tail_sampling:
+          decision_wait: 10s
+          num_traces: 100
+          expected_new_traces_per_sec: 10
+          policies:
+            [
+              {
+                name: errors-policy,
+                type: and,
+                and: {
+                  and_sub_policy:
+                    [
+                      {
+                        name: errors-and-policy-1,
+                        type: status_code,
+                        status_code: { status_codes: [ ERROR ] }
+                      },
+                      {
+                        name: errors-and-policy-2,
+                        type: rate_limiting,
+                        rate_limiting: { spans_per_second: 100 }
+                      },
+                    ]
+                }
+              },
+              {
+                name: latency-policy,
+                type: latency,
+                latency: {threshold_ms: 5000}
+              },
+              {
+                name: randomized-policy,
+                type: probabilistic,
+                probabilistic: { sampling_percentage: 5 }
+              },
+            ]
 
       exporters:
         logging:
@@ -44,7 +84,9 @@ spec:
             receivers:
               - kafka
             processors:
+              - memory_limiter
               - batch
+              - tail_sampling
             exporters:
               - logging
               - otlp
