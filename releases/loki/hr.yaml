@@ -27,7 +27,7 @@ spec:
   #        - name: JAEGER_AGENT_HOST
   #          value: tracing-tempo.tracing.svc
           - name: JAEGER_AGENT_HOST
-            value: otel-ingester.monitoring.svc
+            value: otel-ingester.trace-pipeline.svc
           - name: JAEGER_SAMPLER_TYPE
             value: probabilistic
           - name: JAEGER_SAMPLER_PARAM
@@ -35,7 +35,7 @@ spec:
       read:
         extraEnv:
           - name: JAEGER_AGENT_HOST
-            value: otel-ingester.monitoring.svc
+            value: otel-ingester.trace-pipeline.svc
           - name: JAEGER_SAMPLER_TYPE
             value: probabilistic
           - name: JAEGER_SAMPLER_PARAM

@@ -9,3 +9,4 @@ resources:
 - ./goldilocks/ks.yaml
 - ./otel-distributor/ks.yaml
 - ./otel-processor/ks.yaml
+- ./podinfo/ks.yaml
