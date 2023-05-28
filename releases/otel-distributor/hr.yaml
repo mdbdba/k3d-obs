@@ -73,7 +73,6 @@ spec:
             processors:
               - memory_limiter
               - batch
-              - tail_sampling
             exporters:
               - logging
               - loadbalancing
