@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: otel-processor-headless
+  namespace: trace-pipeline
+  labels:
+    app.kubernetes.io/instance: trace-pipeline-otel-processor
+    app.kubernetes.io/name: opentelemetry-collector
+spec:
+  ports:
+    - name: otlp
+      protocol: TCP
+      appProtocol: grpc
+      port: 4320
+
+  selector:
+    app.kubernetes.io/instance: trace-pipeline-otel-processor
+    app.kubernetes.io/name: opentelemetry-collector
+    component: standalone-collector
+  clusterIP: None

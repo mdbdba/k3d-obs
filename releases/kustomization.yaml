@@ -4,7 +4,8 @@ resources:
 - ./kube-prometheus-stack/ks.yaml
 - ./kafka/ks.yaml
 - ./tempo/ks.yaml
-- ./otel-weeder/ks.yaml
+- ./otel-ingester/ks.yaml
 - ./loki/ks.yaml
 - ./goldilocks/ks.yaml
-- ./otel-seeder/ks.yaml
+- ./otel-distributor/ks.yaml
+- ./otel-processor/ks.yaml

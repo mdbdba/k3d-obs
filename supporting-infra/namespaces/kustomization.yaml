@@ -8,3 +8,4 @@ resources:
 - tracing.yaml
 - telemetry.yaml
 - queuing.yaml
+- trace-pipeline.yaml

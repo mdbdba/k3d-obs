@@ -16,17 +16,17 @@ spec:
   values:
     loki:
       podLabels:
-        generalized_service_type: observability
+        generalized_service_type: telemetry
         generalized_service: loki
       image:
-        tag: 2.6.1
+        tag: 2.8.2
       serviceMonitor:
         enabled: true
       env:
 #        - name: JAEGER_AGENT_HOST
 #          value: tracing-tempo.tracing.svc
         - name: JAEGER_AGENT_HOST
-          value: otel-weeder.monitoring.svc
+          value: otel-ingester.monitoring.svc
         - name: JAEGER_SAMPLER_TYPE
           value: probabilistic
         - name: JAEGER_SAMPLER_PARAM
