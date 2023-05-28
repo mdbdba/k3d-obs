@@ -103,11 +103,17 @@ spec:
 #          enable: "tempoSearch tempoBackendSearch"
         auth:
           disable_login_form: "true"
+          disable_signout_menu: "true"
         auth.anonymous:
           enabled: true
           org_rule: Admin
           org_name: Databased Solution
           hide_version: "false"
+        auth.basic:
+          enabled: "false"
+        auth.generic_oauth:
+          auto_login: "true"
+
       serviceMonitor:
         enabled: "true"
         labels: 
