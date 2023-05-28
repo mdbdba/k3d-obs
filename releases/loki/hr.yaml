@@ -22,15 +22,23 @@ spec:
         tag: 2.8.2
       serviceMonitor:
         enabled: true
-      env:
-#        - name: JAEGER_AGENT_HOST
-#          value: tracing-tempo.tracing.svc
-        - name: JAEGER_AGENT_HOST
-          value: otel-ingester.monitoring.svc
-        - name: JAEGER_SAMPLER_TYPE
-          value: probabilistic
-        - name: JAEGER_SAMPLER_PARAM
-          value: "1"
-
+      write:
+        extraEnv:
+  #        - name: JAEGER_AGENT_HOST
+  #          value: tracing-tempo.tracing.svc
+          - name: JAEGER_AGENT_HOST
+            value: otel-ingester.monitoring.svc
+          - name: JAEGER_SAMPLER_TYPE
+            value: probabilistic
+          - name: JAEGER_SAMPLER_PARAM
+            value: "1"
+      read:
+        extraEnv:
+          - name: JAEGER_AGENT_HOST
+            value: otel-ingester.monitoring.svc
+          - name: JAEGER_SAMPLER_TYPE
+            value: probabilistic
+          - name: JAEGER_SAMPLER_PARAM
+            value: "1"
 
 
