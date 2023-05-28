@@ -107,7 +107,6 @@ spec:
         auth.anonymous:
           enabled: true
           org_rule: Admin
-          org_name: Databased Solution
           hide_version: "false"
         auth.basic:
           enabled: "false"
