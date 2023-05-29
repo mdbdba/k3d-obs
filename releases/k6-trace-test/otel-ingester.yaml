@@ -99,7 +99,7 @@ data:
             spans: [
                 {service: "bogus-svc", name: "url-contains-health-string-filter-check", duration: {min: 200, max: 900}},
                 {service: "bogus-svc", name: "test-calling-url-in-downstream-span", duration: {min: 10, max: 20}, attributes: {"http.url": "http://192.168.1.57:33333/resource/my-svc/health-care-support/34567890?otherStuffhere"}}, 
-                {service: "sanity", name: "check-07"}     
+                {service: "sanity", name: "check-07", parentIdx: 1}     
             ]
         },     
         {
@@ -107,7 +107,7 @@ data:
             spans: [
                 {service: "generic", name: "status-code-403-check", duration: {min: 100, max: 105}},
                 {service: "error-test-svc", name: "error-403", duration: {min: 50, max: 100}, attributes: {"http.status_code": 403}},
-                {service: "sanity", name: "check-08"}    
+                {service: "sanity", name: "check-08", parentIdx: 1}    
             ]
         },    
         {
@@ -115,7 +115,7 @@ data:
             spans: [
                 {service: "generic", name: "status-code-404-check", duration: {min: 100, max: 105}},
                 {service: "error-test-svc", name: "error-404", duration: {min: 50, max: 100}, attributes: {"http.status_code": 404}},
-                {service: "sanity", name: "check-09"}    
+                {service: "sanity", name: "check-09", parentIdx: 1}    
             ]
         },   
         {
@@ -123,7 +123,7 @@ data:
             spans: [
                 {service: "generic", name: "status-code-500-check", duration: {min: 100, max: 105}},
                 {service: "error-test-svc", name: "error-500", duration: {min: 50, max: 100}, attributes: {"http.status_code": 500}},
-                {service: "sanity", name: "check-10"}    
+                {service: "sanity", name: "check-10", parentIdx: 1}    
             ]
         },   
         {
@@ -131,7 +131,7 @@ data:
             spans: [
                 {service: "generic", name: "status-code-502-check", duration: {min: 100, max: 105}},
                 {service: "error-test-svc", name: "error-502", duration: {min: 50, max: 100}, attributes: {"http.status_code": 502}},
-                {service: "sanity", name: "check-11"}    
+                {service: "sanity", name: "check-11", parentIdx: 1}    
             ]
         }, 
         {
@@ -139,7 +139,7 @@ data:
             spans: [
                 {service: "generic", name: "status-code-503-check", duration: {min: 100, max: 105}},
                 {service: "error-test-svc", name: "error-503", duration: {min: 50, max: 100}, attributes: {"http.status_code": 503}},
-                {service: "sanity", name: "check-12"}    
+                {service: "sanity", name: "check-12", parentIdx: 1}    
             ]
         },
         {
