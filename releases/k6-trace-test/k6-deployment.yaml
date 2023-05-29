@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: k6tracing
+  name: k6-otel-ingester
+  namespace: tracing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k6tracing
+  template:
+    metadata:
+      labels:
+        app: k6tracing
+    spec:
+      volumes:
+      - name: tracing-configmap
+        configMap:
+          name: tracing-template-otel-ingester
+      containers:
+      - image: ghcr.io/grafana/xk6-client-tracing:latest
+        name: xk6-client-tracing
+        args:
+        - run
+        - templates/template-otlp.js
+        env:
+        - name: ENDPOINT
+          value: otel-ingester.trace-pipeline:4317
+        volumeMounts:
+        - name: tracing-configmap
+          mountPath: templates
