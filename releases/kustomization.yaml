@@ -10,3 +10,4 @@ resources:
 - ./otel-distributor/ks.yaml
 - ./otel-processor/ks.yaml
 - ./podinfo/ks.yaml
+- ./k6-trace-test/ks.yaml
