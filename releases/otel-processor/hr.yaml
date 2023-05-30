@@ -44,10 +44,49 @@ spec:
           check_interval: 1s
           limit_percentage: 80
           spike_limit_percentage: 10
-        tail_sampling:
+        tail_sampling/pre:
           decision_wait: 10s
-          num_traces: 100
-          expected_new_traces_per_sec: 10
+          num_traces: 1000
+          expected_new_traces_per_sec: 100
+          policies:
+            [
+              {
+                name: removal-policy,
+                type: and,
+                and: {
+                  and_sub_policy:
+                    [
+                      {
+                        name: remove_url_checks,
+                        type: string_attribute,
+                        string_attribute:
+                          {
+                            key: http.url,
+                            values: [ \/health, \/metrics, \/ready ],
+                            enabled_regex_matching: true,
+                            invert_match: true
+                          },
+                      },
+                      {
+                        name: remove_path_checks,
+                        type: string_attribute,
+                        string_attribute:
+                          {
+                            key: http.path,
+                            values: [ \/health, \/metrics, \/ready ],
+                            enabled_regex_matching: true,
+                            invert_match: true
+                          },
+                      },
+                    ]
+                }
+              },
+            ]
+
+        tail_sampling/post:
+          decision_wait: 5s
+          num_traces: 1000
+          expected_new_traces_per_sec: 100
           policies:
             [
               {
@@ -98,8 +137,9 @@ spec:
               - otlp
             processors:
               - memory_limiter
+              - tail_sampling/pre
+              - tail_sampling/post
               - batch
-              - tail_sampling
             exporters:
               - logging
               - otlp

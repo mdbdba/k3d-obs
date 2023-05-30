@@ -64,7 +64,6 @@ spec:
               hostname: otel-processor-headless.trace-pipeline.svc
               port: 4320
 
-
       service:
         pipelines:
           traces:
