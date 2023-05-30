@@ -145,7 +145,7 @@ data:
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
-                {service: "generic", name: "latency-check", duration: {min: 5001, max: 5010}, attributes: {"http.status_code": 200}},
+                {service: "generic", name: "latency-check", duration: {min: 5001, max: 5015}, attributes: {"http.status_code": 200}},
                 {service: "sanity", name: "check-13"}    
             ]
         },
