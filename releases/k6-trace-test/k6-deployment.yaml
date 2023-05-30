@@ -5,6 +5,8 @@ metadata:
     app: k6tracing
   name: k6-otel-ingester
   namespace: tracing
+  annotations:
+    configmap-restart: tracing-template-otel-ingester
 spec:
   replicas: 1
   selector:
