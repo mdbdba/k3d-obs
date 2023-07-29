@@ -3,6 +3,8 @@ small k8s cluster to be used for observability demos.
 
 Create the cluster
 ```shell
+❯ ulimit -n 65536
+
 ❯ k3d cluster create --config=k3d.yaml
 INFO[0000] Using config file k3d.yaml (k3d.io/v1alpha4#simple)
 INFO[0000] portmapping '8081:80' targets the loadbalancer: defaulting to [servers:*:proxy agents:*:proxy]
