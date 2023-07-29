@@ -5,6 +5,8 @@ metadata:
   name: k6-trace-test
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: otel-ingester
   interval: 10m0s
   path: ./releases/k6-trace-test
   prune: true

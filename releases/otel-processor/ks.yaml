@@ -7,7 +7,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: kube-prometheus-stack
+    - name: tempo
   interval: 10m0s
   path: ./releases/otel-processor
   prune: true

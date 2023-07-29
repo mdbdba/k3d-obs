@@ -7,7 +7,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: kube-prometheus-stack
+    - name: kafka
   interval: 10m0s
   path: ./releases/otel-distributor
   prune: true

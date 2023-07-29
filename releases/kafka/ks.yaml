@@ -5,6 +5,8 @@ metadata:
   name: kafka
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: kafka-operator
   interval: 10m0s
   path: ./releases/kafka
   prune: true
