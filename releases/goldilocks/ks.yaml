@@ -6,6 +6,8 @@ metadata:
   name: goldilocks
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: kube-prometheus-stack
   interval: 10m0s
   path: ./releases/goldilocks
   prune: true

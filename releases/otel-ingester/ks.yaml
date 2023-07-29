@@ -6,6 +6,8 @@ metadata:
   name: otel-ingester
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: kube-prometheus-stack
   interval: 10m0s
   path: ./releases/otel-ingester
   prune: true
