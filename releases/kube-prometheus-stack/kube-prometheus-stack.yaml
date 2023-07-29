@@ -39,7 +39,7 @@ spec:
         enableFeatures:
           - exemplar-storage
         image:
-          tag: v2.44.0
+          tag: v2.46.0
         # serviceMonitorSelectorNilUsesHelmValues: true
         serviceMonitorNamespaceSelector:
           matchLabels:
@@ -77,7 +77,7 @@ spec:
       replicas: 1
       image:
         repository: grafana/grafana
-        tag: 9.5.2
+        tag: 10.0.3
       persistence:
         enabled: true
         type: statefulset
