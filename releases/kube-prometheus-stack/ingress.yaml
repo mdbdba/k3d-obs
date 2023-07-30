@@ -6,13 +6,11 @@ metadata:
   namespace: monitoring
   annotations:
     ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
     - http:
         paths:
-          - path: /grafana(/|$)(.*)
+          - path: /
             pathType: Prefix
             backend:
               service:
