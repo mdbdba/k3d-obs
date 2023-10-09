@@ -38,6 +38,9 @@ kubectl cluster-info
 
 # Boostrap (this'll take a few minutes)
 ```shell
+flux --version
+flux version 2.1.1
+
 flux bootstrap github \
 --owner=$GITHUB_USER \
 --repository=k3d-obs \
