@@ -15,7 +15,7 @@ data:
         duration: "20m",
     };
 
-    const endpoint = __ENV.ENDPOINT || "otel-collector:4317"
+    const endpoint = __ENV.ENDPOINT || "otel-ingester:4317"
     const client = new tracing.Client({
         endpoint,
         exporter: tracing.EXPORTER_OTLP,
