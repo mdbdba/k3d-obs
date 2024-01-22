@@ -55,7 +55,7 @@ spec:
                 type: string_attribute,
                 string_attribute:
                   {
-                    key: span.http.route,
+                    key: http.route,
                     values: [ \/metrics, \/sm\/debug\/info, \/sm\/debug\/prometheus, \/health\/live, \/health\/ready, \/actuator\/health\/liveness, \/actuator\/health\/readiness, \/actuator\/prometheus ],
                     enabled_regex_matching: true,
                     invert_match: true
