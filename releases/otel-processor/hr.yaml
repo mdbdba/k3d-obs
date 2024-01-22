@@ -63,7 +63,7 @@ spec:
               },
             ]
 
-        tail_sampling/post:
+        tail_sampling/main:
           decision_wait: 5s
           num_traces: 1000
           expected_new_traces_per_sec: 100
@@ -118,7 +118,7 @@ spec:
             processors:
               - memory_limiter
               - tail_sampling/pre
-              - tail_sampling/post
+              - tail_sampling/main
               - batch
             exporters:
               - logging
