@@ -43,33 +43,6 @@ spec:
           limit_percentage: 80
           spike_limit_percentage: 10
 
-      attributes/noise:
-        actions:
-          - key: qos
-            value: noise
-            action: insert
-        include:
-          match_type: strict
-          attributes:
-            - key: span.http.route
-              values:
-                - \/metrics,
-                - \/sm\/debug\/info,
-                - \/sm\/debug\/prometheus,
-                - \/health\/live,
-                - \/health\/ready,
-                - \/actuator\/health\/liveness,
-                - \/actuator\/health\/readiness,
-                - \/actuator\/prometheus
-
-      routing:
-        attribute_source: resource
-        from_attribute: qos
-        default_exporters:
-          - kafka
-        table:
-          - value: noise
-            exporters: [file/devnull]
 
       exporters:
         logging:
@@ -93,8 +66,6 @@ spec:
             processors:
               - memory_limiter
               - batch
-              - attributes/noise
-              - routing
             exporters:
               - logging
               - kafka
