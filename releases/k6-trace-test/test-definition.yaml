@@ -202,7 +202,7 @@ data:
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
-                {service: "generic",
+                {service: "routing",
                     name: "route-metrics",
                     attributes: {"http.status_code": 200, "http.route": "/metrics"}}
             ]
@@ -210,7 +210,7 @@ data:
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
-                {service: "generic",
+                {service: "routing",
                     name: "route-debug-info",
                     attributes: {"http.status_code": 200, "http.route": "/sm/debug/info"}}
             ]
@@ -219,7 +219,7 @@ data:
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
                 {
-                    service: "generic",
+                    service: "routing",
                     name: "route-debug-prom",
                     attributes: {"http.status_code": 200, "http.route": "/sm/debug/prometheus"}
                 }
@@ -228,7 +228,7 @@ data:
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
-                {service: "generic",
+                {service: "routing",
                     name: "route-health-live",
                     attributes: {"http.status_code": 200, "http.route": "/health/live"}}
             ]
@@ -236,7 +236,7 @@ data:
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
-                {service: "generic",
+                {service: "routing",
                     name: "route-health-ready",
                     attributes: {"http.status_code": 200, "http.route": "/health/ready"}}
             ]
@@ -244,7 +244,7 @@ data:
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
-                {service: "generic",
+                {service: "routing",
                     name: "route-act-hea-liv",
                     attributes: {"http.status_code": 200, "http.route": "/actuator/health/liveness"}}
             ]
@@ -252,7 +252,7 @@ data:
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
-                {service: "generic",
+                {service: "routing",
                     name: "route-act-hea-read",
                     attributes: {"http.status_code": 200, "http.route": "/actuator/health/readiness"}}
             ]
@@ -260,7 +260,7 @@ data:
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
-                {service: "generic",
+                {service: "routing",
                     name: "route-act-prom",
                     attributes: {"http.status_code": 200, "http.route": "/actuator/prometheus"}}
             ]
