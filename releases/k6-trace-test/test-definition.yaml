@@ -8,13 +8,13 @@ data:
   template-otlp.js: |
     import {sleep} from 'k6';
     import tracing from 'k6/x/tracing';
-    import { randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
-
+    import {randomIntBetween} from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
+    
     export const options = {
         vus: 1,
         duration: "20m",
     };
-
+    
     const endpoint = __ENV.ENDPOINT || "otel-ingester:4317"
     const client = new tracing.Client({
         endpoint,
@@ -27,7 +27,9 @@ data:
     
     const traceProcessorSelectionExpectedDefaults = {
         attributeSemantics: tracing.SEMANTICS_HTTP,
-        attributes: {"trace.source": "k6", "test.definition": "otlp-processor", "processor.selection.expected": "yes"},
+        attributes: {
+            "trace.source": "k6", "test.definition": "otlp-processor", "processor.selection.expected": "yes"
+        },
         randomAttributes: {count: 2, cardinality: 5}
     }
     const traceProcessorSelectionNotExpectedDefaults = {
@@ -35,130 +37,244 @@ data:
         attributes: {"trace.source": "k6", "test.definition": "otlp-processor", "processor.selection.expected": "no"},
         randomAttributes: {count: 2, cardinality: 5}
     }
-
-    const traceTemplates = [    
+    
+    const traceTemplates = [
         {
             defaults: traceProcessorSelectionNotExpectedDefaults,
             spans: [
-                {service: "svc1", name: "sample-trace", duration: {min: 300, max: 900}, attributes: {"http.path": "/path/requested", "http.status_code": 200}},
-                {service: "svc2", name: "span-01", duration: {min: 10, max: 20}},    
-                {service: "svc3", name: "span-02", duration: {min: 10, max: 20}},    
-                {service: "svc4", name: "span-03", duration: {min: 30, max: 100}},    
-                {service: "svc5", name: "span-04", duration: {min: 100, max: 200}},    
-                {service: "svc6", name: "span-05", duration: {min: 100, max: 200}},    
-                {service: "svc7", name: "span-06", duration: {min: 10, max: 20}, parentIdx: 5},    
-                {service: "svc8", name: "span-07", duration: {min: 10, max: 20}, parentIdx: 5},    
-                {service: "svc9", name: "span-08", duration: {min: 10, max: 20}, parentIdx: 5},    
+                {service: "svc1",
+                    name: "sample-trace",
+                    duration: {min: 300, max: 900},
+                    attributes: {"http.path": "/path/requested", "http.status_code": 200}},
+                {service: "svc2", name: "span-01", duration: {min: 10, max: 20}},
+                {service: "svc3", name: "span-02", duration: {
+                        min: 10, max: 20
+                    }},
+                {service: "svc4", name: "span-03", duration: {min: 30, max: 100}},
+                {service: "svc5", name: "span-04", duration: {min: 100, max: 200}},
+                {service: "svc6", name: "span-05", duration: {min: 100, max: 200}},
+                {service: "svc7", name: "span-06", duration: {min: 10, max: 20}, parentIdx: 5},
+                {service: "svc8", name: "span-07", duration: {min: 10, max: 20}, parentIdx: 5},
+                {service: "svc9", name: "span-08", duration: {min: 10, max: 20}, parentIdx: 5},
             ]
         },
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
-                {service: "generic", name: "info-path-filter-check", duration: {min: 200, max: 900}, attributes: {"http.path": "/debug"}},
-                {service: "sanity", name: "check-01"}    
+                {service: "generic",
+                    name: "info-path-filter-check",
+                    duration: {min: 200, max: 900},
+                    attributes: {"http.path": "/debug"}},
+                {service: "sanity", name: "check-01"}
             ]
         },
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
-                {service: "generic", name: "health-path-filter-check", duration: {min: 200, max: 900}, attributes: {"http.path":  "/health"}},
-                {service: "sanity", name: "check-02"}    
+                {service: "generic",
+                    name: "health-path-filter-check",
+                    duration: {min: 200, max: 900},
+                    attributes: {"http.path": "/health"}},
+                {service: "sanity", name: "check-02"}
             ]
         },
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
-
-                {service: "generic", name: "metrics-url-filter-check", duration: {min: 200, max: 900}, attributes: {"http.url": "/metrics"}},
-                {service: "sanity", name: "check-03"}    
+                
+                {service: "generic", name: "metrics-url-filter-check", duration: {
+                        min: 200, max: 900
+                    }, attributes: {"http.url": "/metrics"}},
+                {
+                    service: "sanity", name: "check-03"
+                }
             ]
         },
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
-                {service: "generic", name: "ready-url-filter-check", duration: {min: 200, max: 900}, attributes: {"http.url": "/ready"}},
-                {service: "sanity", name: "check-04"}    
+                {service: "generic",
+                    name: "ready-url-filter-check",
+                    duration: {min: 200, max: 900},
+                    attributes: {"http.url": "/ready"}},
+                {service: "sanity", name: "check-04"}
             ]
         },
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
-                {service: "generic", name: "health-url-filter-check", duration: {min: 200, max: 900}, attributes: {"http.url": "/health"}},
-                {service: "sanity", name: "check-05"}    
+                {service: "generic",
+                    name: "health-url-filter-check",
+                    duration: {min: 200, max: 900},
+                    attributes: {"http.url": "/health"}},
+                {service: "sanity", name: "check-05"}
             ]
-        },      
+        },
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
-                {service: "generic", name: "debug-url-filter-check", duration: {min: 50, max: 100}, attributes: {"http.path": "/debug"}},
-                {service: "sanity", name: "check-06"}    
+                {service: "generic",
+                    name: "debug-url-filter-check",
+                    duration: {min: 50, max: 100},
+                    attributes: {"http.path": "/debug"}},
+                {service: "sanity", name: "check-06"}
             ]
         },
         {
             defaults: traceProcessorSelectionNotExpectedDefaults,
             spans: [
-                {service: "bogus-svc", name: "url-contains-health-string-filter-check", duration: {min: 200, max: 900}},
-                {service: "bogus-svc", name: "test-calling-url-in-downstream-span", duration: {min: 10, max: 20}, attributes: {"http.url": "http://192.168.1.57:33333/resource/my-svc/health-care-support/34567890?otherStuffhere"}}, 
-                {service: "sanity", name: "check-07", parentIdx: 0}     
+                {
+                    service: "bogus-svc",
+                    name: "url-contains-health-string-filter-check",
+                    duration: {min: 200, max: 900}
+                },
+                {service: "bogus-svc",
+                    name: "test-calling-url-in-downstream-span",
+                    duration: {min: 10, max: 20},
+                    attributes: {"http.url": "http://192.168.1.57:33333/resource/my-svc/health-care-support/34567890?otherStuffhere"}},
+                {service: "sanity", name: "check-07", parentIdx: 0}
             ]
-        },     
+        },
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
                 {service: "generic", name: "status-code-403-check", duration: {min: 100, max: 105}},
-                {service: "error-test-svc", name: "error-403", duration: {min: 50, max: 100}, attributes: {"http.status_code": 403}},
-                {service: "sanity", name: "check-08", parentIdx: 0}    
+                {service: "error-test-svc", name: "error-403", duration: {min: 50, max: 100}, attributes: {
+                        "http.status_code": 403
+                    }},
+                {service: "sanity", name: "check-08", parentIdx: 0}
             ]
-        },    
+        },
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
                 {service: "generic", name: "status-code-404-check", duration: {min: 100, max: 105}},
-                {service: "error-test-svc", name: "error-404", duration: {min: 50, max: 100}, attributes: {"http.status_code": 404}},
-                {service: "sanity", name: "check-09", parentIdx: 0}    
+                {service: "error-test-svc",
+                    name: "error-404",
+                    duration: {min: 50, max: 100},
+                    attributes: {"http.status_code": 404}},
+                {service: "sanity", name: "check-09", parentIdx: 0}
             ]
-        },   
+        },
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
                 {service: "generic", name: "status-code-500-check", duration: {min: 100, max: 105}},
-                {service: "error-test-svc", name: "error-500", duration: {min: 50, max: 100}, attributes: {"http.status_code": 500}},
-                {service: "sanity", name: "check-10", parentIdx: 0}    
+                {service: "error-test-svc",
+                    name: "error-500",
+                    duration: {min: 50, max: 100},
+                    attributes: {"http.status_code": 500}},
+                {service: "sanity", name: "check-10", parentIdx: 0}
             ]
-        },   
+        },
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
                 {service: "generic", name: "status-code-502-check", duration: {min: 100, max: 105}},
-                {service: "error-test-svc", name: "error-502", duration: {min: 50, max: 100}, attributes: {"http.status_code": 502}},
-                {service: "sanity", name: "check-11", parentIdx: 0}    
+                {service: "error-test-svc",
+                    name: "error-502",
+                    duration: {min: 50, max: 100},
+                    attributes: {"http.status_code": 502}},
+                {service: "sanity", name: "check-11", parentIdx: 0}
             ]
-        }, 
+        },
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
                 {service: "generic", name: "status-code-503-check", duration: {min: 100, max: 105}},
-                {service: "error-test-svc", name: "error-503", duration: {min: 50, max: 100}, attributes: {"http.status_code": 503}},
-                {service: "sanity", name: "check-12", parentIdx: 0}    
+                {service: "error-test-svc",
+                    name: "error-503",
+                    duration: {min: 50, max: 100},
+                    attributes: {"http.status_code": 503}},
+                {service: "sanity", name: "check-12", parentIdx: 0}
             ]
         },
         {
             defaults: traceProcessorSelectionExpectedDefaults,
             spans: [
-                {service: "generic", name: "latency-check", duration: {min: 5001, max: 5015}, attributes: {"http.status_code": 200}},
-                {service: "sanity", name: "check-13"}    
+                {service: "generic",
+                    name: "latency-check",
+                    duration: {min: 5001, max: 5015},
+                    attributes: {"http.status_code": 200}},
+                {service: "sanity", name: "check-13"}
             ]
         },
+        {
+            defaults: traceProcessorSelectionExpectedDefaults,
+            spans: [
+                {service: "generic",
+                    name: "route-metrics",
+                    attributes: {"http.status_code": 200, "http.route": "/metrics"}}
+            ]
+        },
+        {
+            defaults: traceProcessorSelectionExpectedDefaults,
+            spans: [
+                {service: "generic",
+                    name: "route-debug-info",
+                    attributes: {"http.status_code": 200, "http.route": "/sm/debug/info"}}
+            ]
+        },
+        {
+            defaults: traceProcessorSelectionExpectedDefaults,
+            spans: [
+                {
+                    service: "generic",
+                    name: "route-debug-prom",
+                    attributes: {"http.status_code": 200, "http.route": "/sm/debug/prometheus"}
+                }
+            ]
+        },
+        {
+            defaults: traceProcessorSelectionExpectedDefaults,
+            spans: [
+                {service: "generic",
+                    name: "route-health-live",
+                    attributes: {"http.status_code": 200, "http.route": "/health/live"}}
+            ]
+        },
+        {
+            defaults: traceProcessorSelectionExpectedDefaults,
+            spans: [
+                {service: "generic",
+                    name: "route-health-ready",
+                    attributes: {"http.status_code": 200, "http.route": "/health/ready"}}
+            ]
+        },
+        {
+            defaults: traceProcessorSelectionExpectedDefaults,
+            spans: [
+                {service: "generic",
+                    name: "route-act-hea-liv",
+                    attributes: {"http.status_code": 200, "http.route": "/actuator/health/liveness"}}
+            ]
+        },
+        {
+            defaults: traceProcessorSelectionExpectedDefaults,
+            spans: [
+                {service: "generic",
+                    name: "route-act-hea-read",
+                    attributes: {"http.status_code": 200, "http.route": "/actuator/health/readiness"}}
+            ]
+        },
+        {
+            defaults: traceProcessorSelectionExpectedDefaults,
+            spans: [
+                {service: "generic",
+                    name: "route-act-prom",
+                    attributes: {"http.status_code": 200, "http.route": "/actuator/prometheus"}}
+            ]
+        }
     ]
-
+    
     export default function () {
-        const templateIndex = randomIntBetween(0, traceTemplates.length-1)
+        const templateIndex = randomIntBetween(0, traceTemplates.length - 1)
         const gen = new tracing.TemplatedGenerator(traceTemplates[templateIndex])
         client.push(gen.traces())
-
+        
         sleep(randomIntBetween(1, 5));
     }
-
+    
     export function teardown() {
         client.shutdown();
     }
