@@ -1,6 +1,6 @@
 # k3d-obs
 small k8s cluster to be used for observability demos.
-
+# branch - strimzi-0-40-0
 Create the cluster
 ```shell
 ❯ ulimit -n 65536
