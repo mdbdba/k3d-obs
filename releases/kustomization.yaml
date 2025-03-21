@@ -3,9 +3,9 @@ kind: Kustomization
 resources:
 - ./kube-prometheus-stack/ks.yaml
 - ./cert-manager/cert-manager.yaml
-# - ./kafka/ks.yaml
+- ./kafka/ks.yaml
 - ./tempo/ks.yaml
-# - ./otel-ingester/ks.yaml
+- ./otel-ingester/ks.yaml
 - ./loki/ks.yaml
 - ./goldilocks/ks.yaml
 # - ./otel-distributor/ks.yaml
