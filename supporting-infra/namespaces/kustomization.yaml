@@ -10,3 +10,4 @@ resources:
 - telemetry.yaml
 - queues.yaml
 - trace-pipeline.yaml
+- monitoring.yaml
