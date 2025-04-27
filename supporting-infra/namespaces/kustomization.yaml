@@ -2,11 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - cert-manager.yaml
-- monitoring.yaml
-- logging.yaml
+- metrics.yaml
+- logs.yaml
 - resource-audit.yaml
 - teams.yaml
-- tracing.yaml
+- traces.yaml
 - telemetry.yaml
-- queuing.yaml
+- queues.yaml
 - trace-pipeline.yaml

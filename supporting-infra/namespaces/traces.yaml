@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: monitoring
+  name: traces
   labels:
     prometheus.io/monitored: "true"
     goldilocks.fairwinds.com/enabled: "true"

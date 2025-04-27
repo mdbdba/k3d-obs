@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: tracing-template-otel-ingester
-  namespace: tracing
+  namespace: traces
 data:
   template-otlp.js: |
     import {sleep} from 'k6';

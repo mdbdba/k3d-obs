@@ -5,7 +5,7 @@ metadata:
   name: loki-stack
   namespace: flux-system
 spec:
-  targetNamespace: logging
+  targetNamespace: logs
   chart:
     spec:
       chart: loki-stack

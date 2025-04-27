@@ -106,7 +106,7 @@ spec:
           sampling_initial: 5
           sampling_thereafter: 20
         otlp:
-          endpoint: tracing-tempo.tracing.svc:4317
+          endpoint: tempo.traces.svc:4317
           tls:
             insecure: true
 

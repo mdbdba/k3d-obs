@@ -75,10 +75,12 @@ spec:
 
     grafana:
       enabled: true
+      fullnameOverride: grafana
+      targetNamespace: monitoring
       replicas: 1
       image:
         repository: grafana/grafana
-        tag: 10.0.3
+        tag: 11.6.1
       persistence:
         enabled: true
         type: statefulset
@@ -87,9 +89,9 @@ spec:
         accessMode: ["ReadWriteOnce"]
       podLabels:
         app: grafana
-        generalized_service_type: telemetry
-        generalized_service: grafana
-        release: monitoring-prometheus-operator
+        service_category: telemetry
+        criticality: mid
+        release: prom-operator
       podAnnotations:
         obs/monitored: "true"
       resources:
@@ -120,23 +122,23 @@ spec:
         enabled: "true"
         labels: 
           app: grafana
-          release: monitoring-prometheus-operator
+          release: prom-operator
       datasources:
         datasources.yaml:
           apiVersion: 1
           datasources:
           - name: Prometheus
             type: prometheus
-            url: http://kps-prometheus.monitoring:9090/
+            url: http://kps-prometheus.metrics:9090/
             access: proxy
           - name: Loki
             type: loki
             access: proxy
-            url: http://logging-loki-stack.logging.svc:3100/
+            url: http://loki-stack.logs.svc:3100/
           - name: Tempo
             type: tempo
             access: proxy
-            url: http://tempo.tracing.svc:3100/
+            url: http://tempo.traces.svc:3100/
 
     additionalPrometheusRulesMap:
       node.rules:
@@ -210,5 +212,5 @@ spec:
                 record: instance:node_network_transmit_drop_excluding_lo:rate5m
 
   interval: 10m0s
-  targetNamespace: monitoring
+  targetNamespace: metrics
 

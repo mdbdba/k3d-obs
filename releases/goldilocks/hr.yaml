@@ -21,6 +21,6 @@ spec:
           app: goldilocks
           generalized_service_type: telemetry
           generalized_service: goldilocks
-          release: monitoring-prometheus-operator
+          release: prom-operator
     vpa:
       enabled: true
