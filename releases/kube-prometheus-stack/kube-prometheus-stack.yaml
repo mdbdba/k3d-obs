@@ -38,6 +38,7 @@ spec:
     prometheusOperator:
       fullnameOverride: kps-prom-operator
     prometheus:
+      fullnameOverride: kps-prometheus
       prometheusSpec:
         enableFeatures:
           - exemplar-storage
