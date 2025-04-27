@@ -35,6 +35,8 @@ spec:
         limits:
           cpu: 1771m
           memory: 3796M
+    prometheusOperator:
+      fullnameOverride: kps-prom-operator
     prometheus:
       prometheusSpec:
         enableFeatures:
@@ -76,7 +78,7 @@ spec:
     grafana:
       enabled: true
       fullnameOverride: grafana
-      targetNamespace: monitoring
+      namespaceOverride: monitoring
       replicas: 1
       image:
         repository: grafana/grafana
