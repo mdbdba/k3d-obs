@@ -5,7 +5,7 @@ metadata:
   name: kafka-operator
   namespace: flux-system
 spec:
-  targetNamespace: queuing
+  targetNamespace: queues
   chart:
     spec:
       chart: strimzi-kafka-operator

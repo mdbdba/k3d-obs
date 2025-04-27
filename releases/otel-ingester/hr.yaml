@@ -51,7 +51,7 @@ spec:
           sampling_thereafter: 20
         kafka:
           brokers:
-            - kafka-kafka-brokers.queuing.svc:9092
+            - kafka-kafka-brokers.queues.svc:9092
           topic: spans
           protocol_version: 3.3.0
         file/devnull:

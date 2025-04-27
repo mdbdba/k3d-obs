@@ -2,7 +2,7 @@ apiVersion: kafka.strimzi.io/v1beta2
 kind: Kafka
 metadata:
   name: kafka
-  namespace: queuing
+  namespace: queues
 spec:
   kafka:
     version: 3.7.0
