@@ -8,11 +8,11 @@ spec:
   targetNamespace: logging
   chart:
     spec:
-      chart: loki
+      chart: loki-stack
       sourceRef:
         kind: HelmRepository
         name: grafana
-      version: 6.29.0
+      version: 2.10.2
   interval: 10m0s
   values:
     fullnameOverride: loki
