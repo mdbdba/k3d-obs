@@ -37,6 +37,8 @@ spec:
           memory: 3796M
     prometheus:
       prometheusSpec:
+        server:
+          fullnameOverride: kps
         enableFeatures:
           - exemplar-storage
         image:
