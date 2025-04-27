@@ -12,12 +12,14 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: grafana
-      version: 1.3.1
+      version: 1.21.0
   interval: 10m0s
   values:
+    fullnameOverride: tempo
     podLabels:
-      generalized_service_type: telemetry
-      generalized_service: tempo
+      service_category: telemetry
+      signal_type: traces
+      criticality: mid
     serviceMonitor:
       enabled: true
 

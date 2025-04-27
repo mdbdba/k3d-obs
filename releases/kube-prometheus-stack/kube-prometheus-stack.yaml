@@ -14,8 +14,9 @@ spec:
   values:
     fullnameOverride: kps
     labels:
-      spog_service_type: telemetry
-      spog_service: prometheus
+      service_category: telemetry
+      signal_type: metrics
+      criticality: mid
     annotations:
       obs/monitored: "true"
     resources:
@@ -135,7 +136,7 @@ spec:
           - name: Tempo
             type: tempo
             access: proxy
-            url: http://tracing-tempo.tracing.svc:3100/
+            url: http://tempo.tracing.svc:3100/
 
     additionalPrometheusRulesMap:
       node.rules:
