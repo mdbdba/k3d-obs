@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: akhq
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: kafka
+  interval: 10m0s
+  path: ./releases/akhq
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system

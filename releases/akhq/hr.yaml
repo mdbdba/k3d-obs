@@ -1,0 +1,28 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: akhq
+  namespace: flux-system
+spec:
+  targetNamespace: queuing
+  chart:
+    spec:
+      chart: akhq
+      sourceRef:
+        kind: HelmRepository
+        name: akhq
+      version: 0.25.1
+  interval: 10m0s
+  values:
+    extraEnv:
+    - name: AKHQ_CONFIGURATION
+      value: |
+          akhq:
+            security:
+              enabled: false
+            connections:
+              kafka:
+                properties:
+                  bootstrap.servers: "kafka-kafka-brokers.queues.svc:9092"
+

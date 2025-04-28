@@ -137,7 +137,7 @@ spec:
           - name: Loki
             type: loki
             access: proxy
-            url: http://loki-stack.logs.svc:3100/
+            url: http://logs-loki-stack.logs.svc:3100/
           - name: Tempo
             type: tempo
             access: proxy
