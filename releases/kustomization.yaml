@@ -8,6 +8,7 @@ resources:
 - ./otel-ingester/ks.yaml
 - ./loki/ks.yaml
 - ./goldilocks/ks.yaml
+- ./akhq/ks.yaml
 # - ./otel-distributor/ks.yaml
 # - ./otel-processor/ks.yaml
 # - ./podinfo/ks.yaml
