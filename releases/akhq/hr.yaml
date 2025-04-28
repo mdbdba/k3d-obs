@@ -5,7 +5,7 @@ metadata:
   name: akhq
   namespace: flux-system
 spec:
-  targetNamespace: queuing
+  targetNamespace: queues
   chart:
     spec:
       chart: akhq
