@@ -5,6 +5,7 @@ metadata:
   name: minio-operator
   namespace: flux-system
 spec:
+  targetNamespace: storage
   values:
     fullnameOverride: minio-operator
   interval: 10m
