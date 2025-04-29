@@ -5,7 +5,7 @@ metadata:
   name: loki-stack
   namespace: flux-system
 spec:
-  targetNamespace: logs
+  targetNamespace: logging
   chart:
     spec:
       chart: loki-stack
@@ -26,5 +26,6 @@ spec:
         enabled: true
       tracing:
         jaegerAgentHost:  otel-ingester.trace-pipeline
+
 
 
