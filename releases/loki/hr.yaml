@@ -27,5 +27,4 @@ spec:
       tracing:
         jaegerAgentHost:  otel-ingester.trace-pipeline
 
-      image:
 
