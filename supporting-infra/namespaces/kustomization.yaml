@@ -11,3 +11,4 @@ resources:
 - queues.yaml
 - trace-pipeline.yaml
 - monitoring.yaml
+- storage.yaml
