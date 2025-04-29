@@ -1,20 +1,19 @@
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: minio
+  name: minio-operator
   namespace: flux-system
 spec:
-  targetNamespace: storage
+  values:
+    fullnameOverride: minio-operator
+  interval: 10m
+  timeout: 2m
   chart:
     spec:
       chart: minio-operator
+      version: '0.1.7'
       sourceRef:
         kind: HelmRepository
         name: bitnami
-      version: 0.1.7
-  interval: 10m0s
-  values:
-    fullnameOverride: minio-operator
-
-
+        namespace: flux-system
