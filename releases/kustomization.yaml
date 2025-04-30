@@ -11,6 +11,6 @@ resources:
 - ./akhq/ks.yaml
 - ./otel-distributor/ks.yaml
 - ./otel-processor/ks.yaml
+# - ./k6-trace-test/ks.yaml
 # - ./podinfo/ks.yaml
-- ./k6-trace-test/ks.yaml
 #- ./minio/ks.yaml
