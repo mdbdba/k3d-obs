@@ -7,3 +7,4 @@ resources:
   - tenant-config.yaml
   - storage-user.yaml
   - tenant.yaml
+  - storage-class.yaml
