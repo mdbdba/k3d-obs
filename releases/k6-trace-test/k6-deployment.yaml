@@ -22,7 +22,8 @@ spec:
         configMap:
           name: tracing-template-otel-ingester
       containers:
-      - image: ghcr.io/grafana/xk6-client-tracing:latest
+      # - image: ghcr.io/grafana/xk6-client-tracing:latest
+      - image: ghcr.io/grafana/xk6-client-tracing:0.0.3
         name: xk6-client-tracing
         args:
         - run
