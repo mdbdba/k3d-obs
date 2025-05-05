@@ -1,5 +1,6 @@
 # k3d-obs
-small k8s cluster to be used for observability demos.
+small k8s cluster to be used for observability demos.  To use this for yourself, fork this repo 
+and use your fork to follow the steps below.
 
 Create the cluster
 ```shell
@@ -37,6 +38,7 @@ kubectl cluster-info
 ```
 
 # Boostrap (this'll take a few minutes)
+Set your GITHUB_USER variable, then do the following
 ```shell
 flux --version
 flux version  2.5.1
@@ -48,23 +50,7 @@ flux bootstrap github \
 --path=./ops \
 --personal
 ```
-# node mixin 
-```shell
-❯ cd mixin/node
-❯ make node-rules.yaml node-alert.yaml
-❯ make dashboards_out
-jsonnet -J vendor -m dashboards_out dashboards.jsonnet
-dashboards_out/node-cluster-rsrc-use.json
-dashboards_out/node-rsrc-use.json
-dashboards_out/nodes-darwin.json
-dashboards_out/nodes.json
 
-❯ promtool check rules node_rules.yaml
-Checking node_rules.yaml
-  SUCCESS: 11 rules found
-
-❯ kubectl create configmap -n monitoring node-rules --from-file=node_rules.yaml --dry-run=client -o yaml > node_rules_configmap.yaml
-```
 
 
 
