@@ -50,7 +50,43 @@ flux bootstrap github \
 --path=./ops \
 --personal
 ```
+While it bootstraps, you can have a look at it's process by checking
+```
+> kg kustomization -A
+NAMESPACE     NAME                    AGE   READY   STATUS
+flux-system   akhq                    10m   False   dependency 'flux-system/kafka' is not ready
+flux-system   flux-system             10m   True    Applied revision: main@sha1:7168a1e8d53baf556b904098d7c479619bd39444
+flux-system   k6-trace-test           10m   False   dependency 'flux-system/otel-ingester' is not ready
+flux-system   kafka                   10m   False   dependency 'flux-system/kube-prometheus-stack' is not ready
+flux-system   kafka-operator          10m   True    Applied revision: main@sha1:7168a1e8d53baf556b904098d7c479619bd39444
+flux-system   kube-prometheus-stack   10m   True    Applied revision: main@sha1:7168a1e8d53baf556b904098d7c479619bd39444
+flux-system   loki                    10m   False   dependency 'flux-system/kube-prometheus-stack' is not ready
+flux-system   minio-operator          10m   True    Applied revision: main@sha1:7168a1e8d53baf556b904098d7c479619bd39444
+flux-system   operators               10m   True    Applied revision: main@sha1:7168a1e8d53baf556b904098d7c479619bd39444
+flux-system   otel-distributor        10m   False   dependency 'flux-system/kafka' is not ready
+flux-system   otel-ingester           10m   True    Applied revision: main@sha1:7168a1e8d53baf556b904098d7c479619bd39444
+flux-system   otel-processor          10m   False   dependency 'flux-system/tempo' is not ready
+flux-system   releases                10m   True    Applied revision: main@sha1:7168a1e8d53baf556b904098d7c479619bd39444
+flux-system   repos                   10m   True    Applied revision: main@sha1:7168a1e8d53baf556b904098d7c479619bd39444
+flux-system   supporting-infra        10m   True    Applied revision: main@sha1:7168a1e8d53baf556b904098d7c479619bd39444
+flux-system   supporting-infra-ns     10m   True    Applied revision: main@sha1:7168a1e8d53baf556b904098d7c479619bd39444
+flux-system   tempo                   10m   True    Applied revision: main@sha1:7168a1e8d53baf556b904098d7c479619bd39444
+```
+and 
+```
+> kg helmrelease -A
+NAMESPACE     NAME                  AGE     READY     STATUS
+flux-system   akhq                  118s    True      Helm install succeeded for release queues/queues-akhq.v1 with chart akhq@0.25.1
+flux-system   kafka-operator        13m     True      Helm install succeeded for release queues/queues-kafka-operator.v1 with chart strimzi-kafka-operator@0.40.0
+flux-system   loki-stack            2m28s   True      Helm install succeeded for release logs/logs-loki-stack.v1 with chart loki-stack@2.10.2
+flux-system   minio-operator        13m     True      Helm install succeeded for release storage/storage-minio-operator.v1 with chart minio-operator@0.1.7
+flux-system   otel-distributor      117s    True      Helm install succeeded for release trace-pipeline/trace-pipeline-otel-distributor.v1 with chart opentelemetry-collector@0.62.3
+flux-system   otel-ingester         2m57s   Unknown   Running 'install' action with timeout of 5m0s
+flux-system   otel-processor        2m27s   True      Helm install succeeded for release trace-pipeline/trace-pipeline-otel-processor.v1 with chart opentelemetry-collector@0.62.3
+flux-system   prometheus-operator   2m58s   True      Helm install succeeded for release metrics/metrics-prometheus-operator.v1 with chart kube-prometheus-stack@71.2.0
+flux-system   tempo                 2m57s   True      Helm install succeeded for release traces/traces-tempo.v1 with chart tempo@1.21.0
+```
 
-
-
+The dependencies have been set so that things should come up after a while 
+with a minimum of fuss.
 
